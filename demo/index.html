@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Chorgard's website</title>
+        <style>
+            body{
+    background-color:rgb(255, 255, 255);
+    margin:0px;
+    overflow:hidden;
+}
+#gameScreen{
+    position:absolute;
+    display:none;
+}
+#aliasIn{
+    position:absolute;
+    width:200px;
+    height:20px;
+
+}
+#gameChat{
+    position:absolute;
+    display:none;
+    width:490px;
+    height:20px;
+}
+
+
+        </style>
+    </head>
+    <img src="player.png" style="display:none;" id="playerImage">
+    <body>
+        
+        <canvas id="gameScreen"></canvas>
+        <input id="gameChat" placeholder="Chat something">
+        <input id="aliasIn">
+        
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script>
+      // NOTE - INCLUDE YOUR FIREBASE CONFIG HERE FOR ANYTHING TO WORK:
+      const firebaseConfig = {
+        apiKey: "AIzaSyAdBJ6dQ4CDgFhdfzlJi4mutmqUDzC50kI",
+              authDomain: "multiplayer-testing-b3fc0.firebaseapp.com",
+              databaseURL: "https://multiplayer-testing-b3fc0-default-rtdb.firebaseio.com",
+              projectId: "multiplayer-testing-b3fc0",
+              storageBucket: "multiplayer-testing-b3fc0.appspot.com",
+              messagingSenderId: "211882847368",
+              appId: "1:211882847368:web:eaeae24693c6fa6283433d"
+      };
+      firebase.initializeApp(firebaseConfig);
+    </script>
+
+
+    <script src="app.js"></script>
+    </body>
+</html>
