@@ -47,6 +47,7 @@ var playerArr = [];
 var playerF = 0;
 var frameCount=0;
 var inGame=false;
+var playerCoor=[];
 var player = {
     
         x:cnv.width/2,
@@ -92,10 +93,10 @@ var player = {
             player.currAnim="run";
         }
     },
-    draw:(d)=>{
+    draw:(d, d2)=>{
         
         ctx.save();
-        ctx.translate(d.x+10, d.y);
+        ctx.translate(d2.x+10, d2.y);
         if(d.animFlipped){
             ctx.scale(-1, 1);
         }
@@ -136,10 +137,15 @@ function stopKeyPress(){
     keyTimer=0;
 }
 
-
+for(var i = 0; i < 20; i++){
+    playerCoor[i]={x:0, y:0};
+}
 firebase.auth().signInAnonymously();
+var timeInGame = 0;
+var frameCount = 0;
 
 setInterval(()=>{
+    frameCount++;
     keyTimer++;
         if(keys.enter&&!inGame){
         cnv.style.display = "block";
@@ -165,31 +171,41 @@ setInterval(()=>{
         }
         frameCount++;
         var allPlayersRef = firebase.database().ref("player");
-    
+        
         allPlayersRef.on("value", (object)=>{
             var p;
             players=object.val()||{};
             playerArr=[];
             playerF=0;
+            timeInGame++;
+            //console.log(timeInGame);
             Object.keys(players).forEach((key)=>{
                 
                 p = players[key];
                 
                 playerArr[playerF]=p;
+                if(timeInGame<100){
+                    console.log("called");
+                    playerCoor[playerF].x=playerArr[playerF].x;
+                    playerCoor[playerF].y=playerArr[playerF].y;
+                }
                 playerF++;
             });
             
     
         });
+        
         //playerId = players.length;
         ctx.clearRect(0, 0, cnv.width, cnv.height);
         ctx.fillStyle="black";
         ctx.fillRect(0, 0, cnv.width, cnv.height);
         //ctx.fillStyle="red";
         //ctx.fillRect(player.x, player.y, 20, 20);
-        var playerRef = firebase.database().ref("player/"+playerId);
         
-        playerRef.set({
+        if(frameCount%20===0){
+            var playerRef = firebase.database().ref("player/"+playerId);
+            //console.log(playerRef);
+            playerRef.set({
             alias:player.alias,
             name:playerId,
             x:player.x,
@@ -200,33 +216,42 @@ setInterval(()=>{
             chatTimer:player.chatTimer,
             currStyle32:player.currStyle32,
         });
+        playerRef.onDisconnect().remove();
+        }
+        
         if(keyTimer>40){
             player.move();
         }
         
-        playerRef.onDisconnect().remove();
+        
         //console.log(players);
         for(var i = 0; i < playerArr.length; i++){
             var pl = playerArr[i];
+            var pl2 = playerCoor[i];
             /*
             ctx.fillStyle="white";
             ctx.fillRect(pl.x, pl.y, 20, 20);
             */
-            player.draw(pl);
+            player.draw(pl, pl2);
             ctx.fillStyle="white";
             ctx.textAlign="center";
-            ctx.fillText(pl.alias, pl.x+10, pl.y-2);
+            ctx.fillText(pl.alias, pl2.x+10, pl2.y-2);
+            if(Math.hypot(pl.x-pl2.x, pl.y-pl2.y)>3){
+                pl2.x+=Math.cos(Math.atan2(pl.y-pl2.y, pl.x-pl2.x))*2.5;
+                pl2.y+=Math.sin(Math.atan2(pl.y-pl2.y, pl.x-pl2.x))*2.5;
+            }
+            
             if(pl.chatTimer<400){
                 var o = 3;
-                ctx.drawImage(textEndImage, pl.x+10+pl.chat.length*o, pl.y-30, 12, 12);
+                ctx.drawImage(textEndImage, pl2.x+10+pl.chat.length*o, pl2.y-30, 12, 12);
                 ctx.save();
-                ctx.translate(pl.x+10-pl.chat.length*o, pl.y-30);
+                ctx.translate(pl2.x+10-pl.chat.length*o, pl2.y-30);
                 ctx.scale(-1, 1);
                 ctx.drawImage(textEndImage, 0, 0, 12, 12);
                 ctx.restore();
-                ctx.fillRect(pl.x+10-pl.chat.length*o, pl.y-30, pl.chat.length*o*2, 12); 
+                ctx.fillRect(pl2.x+10-pl.chat.length*o, pl2.y-30, pl.chat.length*o*2, 12); 
                 ctx.fillStyle="black";
-                ctx.fillText(pl.chat, pl.x+10, pl.y-20);
+                ctx.fillText(pl.chat, pl2.x+10, pl2.y-20);
             }
 
         }

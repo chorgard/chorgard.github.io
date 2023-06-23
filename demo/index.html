@@ -34,6 +34,9 @@
 #animType{
     position:absolute;
 }
+#NOTICE{
+    position:absolute;
+}
         </style>
     </head>
     <img src="player.png" style="display:none;" id="playerImage">
@@ -41,6 +44,7 @@
     <img src="hover.png" style="display:none;" id="playerImage3">
     <img src="text-end.png" style="display:none;" id="textEndImage">
     <body>
+        <span id="NOTICE"><bold><strong><i>(IN-GAME) NOTICE:</i></strong></bold> If you can see other players but not yourself, refresh the page and try again</span>
         <select id="animType" onchange="save()">
             <option>
                 Normal
