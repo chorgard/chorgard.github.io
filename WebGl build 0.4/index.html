@@ -8,6 +8,27 @@
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
   <body>
+    <div id="header">
+      <a href="https://chorgard.github.io">
+          <button style="position:absolute; border:none;top:15px; left:10px;" id="homeButton">
+          <img src="../home-icon.png" style="width:30px; image-rendering: crisp-edges;" id="homeButtonImg">
+      </button>
+      </a>
+      <script type="text/javascript">
+          homeButton = document.getElementById("homeButton");
+          homeButton.onmouseover=()=>{
+              homeButtonImg.src="../home-icon-highlight.png"
+          };
+          homeButton.onmouseout=()=>{
+              homeButtonImg.src="../home-icon.png"
+          };
+      </script>
+      
+      
+      <div id="innerHeader">
+          Chorgard's website
+      </div>
+  </div>
     <div id="unity-container" class="unity-desktop">
       <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
       <div id="unity-loading-bar">
