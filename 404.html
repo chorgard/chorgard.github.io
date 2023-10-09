@@ -8,19 +8,37 @@
         body {
             text-align: center;
         }
+        #image{
+            width:300px;
+            height:270px;
+            image-rendering: pixelated;
+        }
     </style>
 </head>
 
 <body>
+    <img src="404img.png" id="image">
     <h1>404</h1>
-    <span>We didn't find anything here.<br>Go to homepage?</span>
+    <span id="explanation">We didn't find anything here.</span><br>Go to homepage?
     <br>
     <a href="https://chorgard.github.io/">
         <button>
             <img src="home-icon.png">
         </button>
     </a>
-
+    <script>
+        var mainText = "We didn't find anything here."
+        var altTexts = [
+        "We didn't find anything here you nosy sussy baka.",
+        "Nothing here.",
+        "Huh?",
+        "??????????",
+        "Yes, this text sometimes changes."
+        ];
+        if(Math.random()>0.95){
+            explanation.innerHTML = altTexts[Math.round(Math.random()*altTexts.length)]
+;        }
+    </script>
 </body>
 
 </html>
