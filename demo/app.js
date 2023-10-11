@@ -247,9 +247,9 @@ setInterval(() => {
             }
 
             
-            playerRef.onDisconnect().remove();
+            
         }
-
+playerRef.onDisconnect().remove();
 
         
 
