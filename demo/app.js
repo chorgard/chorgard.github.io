@@ -163,6 +163,10 @@ firebase.auth().signInAnonymously();
 var timeInGame = 0;
 var frameCount = 0;
 var moves = 0;
+window.onbeforeunload = (e)=>{
+    playerRef.remove();
+    e.returnValue = '';
+};
 setInterval(() => {
     frameCount++;
     keyTimer++;
@@ -250,7 +254,7 @@ setInterval(() => {
             
             
         }
-playerRef.onDisconnect().remove();
+
 
         
 
