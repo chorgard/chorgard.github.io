@@ -115,7 +115,7 @@ var player = {
         ctx.restore();
     },
 };
-
+var playerRef = firebase.database().ref("player/" + playerId);
 var localData = {};
 
 function resetData() {
@@ -224,7 +224,7 @@ setInterval(() => {
         //ctx.fillRect(player.x, player.y, 20, 20);
         player.moveTimer++;
         if (player.moveTimer > 20) {
-            var playerRef = firebase.database().ref("player/" + playerId);
+            playerRef = firebase.database().ref("player/" + playerId);
             //console.log(playerRef);
             if (keyTimer > 40) {
                 player.move();
