@@ -87,7 +87,7 @@
             <br>
             <h1>What do you want?</h1>
             
-            <select name="formal" onchange="javascript:handleSelect(this)" style="width:300px; height:50px;">
+            <select name="formal" onchange="javascript:handleSelect(this)" style="width:300px; height:50px;font-size: 20px; font-weight: bold;" class ="coolButton"id="OnlyOneThingLinks">
                 <option value="" style="display:none;">
                     Go to Game? (In development)
                 </option>
@@ -98,7 +98,8 @@
                 <script type="text/javascript">
                   function handleSelect(elm)
                   {
-                     window.location = elm.value;
+                    window.location = elm.value;
+                    elm.selectedIndex=0;
                   }
                 </script>
                 <br>
