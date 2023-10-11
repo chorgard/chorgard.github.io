@@ -45,6 +45,13 @@
             color: white;
             background-color:black;
         }
+        select {
+            appearance:inherit;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+}
     </style>
 </head>
 
@@ -79,12 +86,21 @@
             <h1>Just a dweeb with a computer</h1>
             <br>
             <h1>What do you want?</h1>
-            <a href="./WebGl%20build%200.4">
-                <button class="coolButton"    style="height:50px;">
-                    <h2>Go to game? (in develpment)</h2>
-
-
-                </button>
+            
+            <select name="formal" onchange="javascript:handleSelect(this)" style="width:300px; height:50px;">
+                <option value="" style="display:none;">
+                    Go to Game? (In development)
+                </option>
+                <option value="WebGl%20build%200.4">Version 0.4</option>
+                <option value="WebGl%20build%200.5">Version 0.5</option>
+                </select>
+                
+                <script type="text/javascript">
+                  function handleSelect(elm)
+                  {
+                     window.location = elm.value;
+                  }
+                </script>
                 <br>
                 <br>
                 <a href="./demo">
