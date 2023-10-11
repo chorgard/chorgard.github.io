@@ -115,6 +115,7 @@ var player = {
         ctx.restore();
     },
 };
+//
 var playerRef = firebase.database().ref("player/" + playerId);
 var localData = {};
 
