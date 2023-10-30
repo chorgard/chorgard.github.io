@@ -63,7 +63,14 @@
 
             padding-bottom: 10%;
         }
+        @font-face {
+        font-family: myFirstFont;
+        src: url("img/pixel-times.ttf");
+        }
 
+        * {
+        font-family: myFirstFont;
+        }
         #bodyDiv {
             text-align: center;
         }
@@ -80,7 +87,7 @@
             color: white;
             background-color: black;
         }
-
+        
         select {
             appearance: inherit;
             -webkit-appearance: none;
@@ -125,8 +132,8 @@
         </a>
         <div style="float: right; vertical-align: middle; padding-right:10px; padding-top:20px;">
             <select onchange="javascript:handleSelect(this)"
-                style="background-color: rgba(0, 0, 0, 0); border:none; font-size:22px; font-weight:bold; width:80px; font-family: 'Times';">
-                <option selected style="display: none;">Games</option>
+                style="background-color: rgba(0, 0, 0, 0); border:none; font-size:22px; font-weight:bold; width:100px; ">
+                <option selected style="display: none;">My Projects</option>
                 <Optgroup label="Unity Game">
                     <option value="WebGl%20build%200.4">Version 0.4</option>
                     <option value="WebGl%20build%200.5">Version 0.5</option>
@@ -190,7 +197,7 @@
 
             <br>
             <h3>Hint: go to the HTML/JS Game if you want to talk.<br>If it gets to laggy, just reload the page and
-                do it again<br><strong><i>NOTICE</i></strong>: ANYONE can join that game at any time,<br>but it is
+                do it again<br><i>NOTICE</i>: ANYONE can join that game at any time,<br>but it is
                 unlikely, as really only 3 ppl know of this website 😭</h3>
 
         </div>
