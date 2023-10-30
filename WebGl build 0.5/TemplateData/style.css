@@ -15,7 +15,14 @@ body {
     font-size: 52px;
     color: rgb(0, 0, 0);
 }
+@font-face {
+    font-family: myFirstFont;
+    src: url("img/pixel-times.ttf");
+    }
 
+    * {
+    font-family: myFirstFont;
+    }
 #unity-container {
     position: absolute
 }
