@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Chorgard's website</title>
+    <link rel="shortcut icon" href="./favicon.png" type="20x20png">
+    <style>
+        body {
+            background-color: rgb(0, 0, 0);
+            margin: 0px;
+
+
+        }
+
+        /* width */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: #000000;
+            border: none;
+
+
+
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #ffffff;
+            outline: auto;
+
+            outline-offset: -1px;
+            outline-color: rgb(63, 63, 63);
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+
+        }
+
+        #header {
+            color: black;
+            background-color: white;
+            height: 60px;
+            overflow: hidden;
+            vertical-align: middle;
+
+        }
+
+        #innerHeader {
+
+            text-align: center;
+            font-size: 52px;
+            color: rgb(0, 0, 0);
+        }
+
+        #mainImgDiv {
+            padding-top: 10%;
+
+            padding-bottom: 10%;
+        }
+        @font-face {
+        font-family: myFirstFont;
+        src: url("img/pixel-times.ttf");
+        }
+
+        * {
+        font-family: myFirstFont;
+        }
+        #bodyDiv {
+            text-align: center;
+        }
+
+        .coolButton {
+            border: none;
+            outline: none;
+            border-radius: 5%;
+            background-color: white;
+            color: black;
+        }
+
+        body {
+            color: white;
+            background-color: black;
+        }
+        
+        select {
+            appearance: inherit;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            text-indent: 1px;
+            text-overflow: '';
+
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="header">
+        <a href="https://chorgard.github.io">
+            <button style="position:absolute; border:none;top:15px; left:10px; background-color: rgba(0, 0, 0, 0);"
+                id="homeButton">
+                <img src="home-icon.png" style="width:30px; image-rendering: crisp-edges;" id="homeButtonImg">
+            </button>
+        </a>
+        <script type="text/javascript">
+            //k
+            homeButton = document.getElementById("homeButton");
+            homeButton.onmouseover = () => {
+                homeButtonImg.src = "home-icon-highlight.png"
+            };
+            homeButton.onmouseout = () => {
+                homeButtonImg.src = "home-icon.png"
+            };
+        </script>
+        <a href="readme.md.html">
+            <div style="float: right; vertical-align: middle; padding-right:10px;">
+                <h2>About</h2>
+
+
+            </div>
+        </a>
+        <div style="float: right; vertical-align: middle; padding-right:10px; padding-top:20px;">
+            <select onchange="javascript:handleSelect(this)"
+                style="background-color: rgba(0, 0, 0, 0); border:none; font-size:22px; font-weight:bold; width:100px; ">
+                <option selected style="display: none;">My Projects</option>
+                <Optgroup label="Unity Game">
+                    <option value="WebGl%20build%200.4">Version 0.4</option>
+                    <option value="WebGl%20build%200.5">Version 0.5</option>
+                    <option value="WebGl%20build%200.6">Version 0.6</option>
+                <optgroup label="Misc">
+                    <option value="demo">Multiplayer test</option>
+                    <option value="Don't_Fall">Don't Fall Rem.
+                    </option>
+            </select>
+
+
+        </div>
+        <div id="innerHeader">
+            Chorgard's website
+        </div>
+    </div>
+    <div id="bodyDiv">
+        <div id="mainImgDiv">
+            <img id="kingAnim" src="img/king.gif">
+        </div>
+        <div style="color:white">
+            <h1>Just a dweeb with a computer</h1>
+            <br>
+            <h1>What do you want?</h1>
+
+            <select name="formal" onchange="javascript:handleSelect(this)"
+                style="width:300px; height:50px;font-size: 20px; font-weight: bold;" class="coolButton"
+                id="OnlyOneThingLinks">
+                <option value="" style="display:none;">
+                    Go to G a m e? (In development)
+                </option>
+                <option value="WebGl%20build%200.4">Version 0.4</option>
+                <option value="WebGl%20build%200.5">Version 0.5</option>
+                <option value="WebGl%20build%200.6">Version 0.6</option>
+            </select>
+
+            <script type="text/javascript">
+                function handleSelect(elm) {
+                    window.location = elm.value;
+                    elm.selectedIndex = 0;
+                }
+            </script>
+            <br>
+            <br>
+            <a href="./demo">
+                <button class="coolButton" style="height:70px;">
+                    <h2>Go to test HTML/JS multiplayer<br> project</h2>
+
+
+                </button>
+            </a>
+            <br>
+            <br>
+            <a href="./Don't_Fall">
+                <button class="coolButton" style="height:70px;">
+                    <h2>Don't Fall unblocked+remastered<br> project</h2>
+
+
+                </button>
+            </a>
+
+            <br>
+            <h3>Hint: go to the HTML/JS Game if you want to talk.<br>If it gets to laggy, just reload the page and
+                do it again<br><i>NOTICE</i>: ANYONE can join that game at any time,<br>but it is
+                unlikely, as really only 3 ppl know of this website 😭</h3>
+
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>
