@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Chorgard's website</title>
+        <link rel="shortcut icon" href="../favicon.png" type="20x20png">
+        <style>
+            body{
+    background-color:rgb(0, 0, 0);
+    margin:0px;
+    overflow:hidden;
+    color:white;
+}
+#header {
+            color: black;
+            background-color: white;
+            height: 60px;
+        }
+
+        #innerHeader {
+            text-align: center;
+            font-size: 52px;
+            color: rgb(0, 0, 0);
+        }
+
+#gameScreen{
+    position:absolute;
+    display:none;
+}
+#aliasIn{
+    position:absolute;
+    width:200px;
+    height:20px;
+
+}
+#gameChat{
+    position:absolute;
+    display:none;
+    width:490px;
+    height:20px;
+}
+#accountPage{
+    display:none;
+}
+#message{
+    padding-top:calc(50vh - 30px);
+}
+#animType{
+    position:absolute;
+}
+#NOTICE{
+    position:absolute;
+}
+@font-face {
+        font-family: myFirstFont;
+        src: url("../img/pixel-times.ttf");
+        }
+
+        * {
+        font-family: myFirstFont;
+        }
+        </style>
+    </head>
+    <img src="player.png" style="display:none;" id="playerImage">
+    <img src="speed.png" style="display:none;" id="playerImage2">
+    <img src="hover.png" style="display:none;" id="playerImage3">
+    <img src="text-end.png" style="display:none;" id="textEndImage">
+    <body>
+        <div id="header">
+            <a href="https://chorgard.github.io">
+                <button style="position:absolute; border:none;top:15px; left:10px; background-color: rgba(0, 0, 0, 0);" id="homeButton">
+                <img src="../home-icon.png" style="width:30px; image-rendering: crisp-edges;" id="homeButtonImg">
+            </button>
+            </a>
+            <script type="text/javascript">
+                homeButton = document.getElementById("homeButton");
+                homeButton.onmouseover=()=>{
+                    homeButtonImg.src="../home-icon-highlight.png"
+                };
+                homeButton.onmouseout=()=>{
+                    homeButtonImg.src="../home-icon.png"
+                };
+            </script>
+            
+            
+            <div id="innerHeader">
+                Chorgard's website
+            </div>
+        </div>
+        <span id="NOTICE"><bold><strong><i>(IN-GAME) NOTICE:</i></strong></bold> If you can see other players but not yourself, refresh the page and try again</span>
+        <select id="animType" onchange="save()">
+            <option>
+                Normal
+            </option>
+            <option>
+                Speed
+            </option>
+            <option>
+                Hover
+            </option>
+        </select>
+        <canvas id="gameScreen"></canvas>
+        <input id="gameChat" placeholder="Chat something" onkeypress="stopKeyPress()" maxlength="60" minlength="1">
+        <div style="text-align:center;" id="message">
+            <strong>Type in your alias (Enter to submit):</strong>
+            <br>
+            <br>
+            <br>
+            <i>or</i>
+            <br>
+            <strong>Load your saved character:</strong>
+            <span id="lCharName">No character saved</span>
+            <button id="playLoadChar" style="display:none; position:absolute; width:200px; height:30px;" onclick="playLoad()">Play with saved Character</button>
+        </div>
+        <script>
+            var plc = document.getElementById("playLoadChar");
+            plc.style.left=innerWidth/2-100+"px";
+            setInterval(()=>{
+                if(localStorage["miniMono"]!=''){
+                    var d = JSON.parse(localStorage["miniMono"]);
+                    document.getElementById("lCharName").innerHTML=d.alias;
+                    document.getElementById("playLoadChar").style.display="block";
+                }
+            }, 100);
+            
+        </script>
+        <input id="aliasIn" placeholder="Type in an alias">
+        <div id="accountPage">
+            <button style="position:absolute;" onclick="play()">Play</button>
+            <button style="position:absolute;" onclick="resetData()">New Character</button>
+        </div>
+        
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyAdBJ6dQ4CDgFhdfzlJi4mutmqUDzC50kI",
+              authDomain: "multiplayer-testing-b3fc0.firebaseapp.com",
+              databaseURL: "https://multiplayer-testing-b3fc0-default-rtdb.firebaseio.com",
+              projectId: "multiplayer-testing-b3fc0",
+              storageBucket: "multiplayer-testing-b3fc0.appspot.com",
+              messagingSenderId: "211882847368",
+              appId: "1:211882847368:web:eaeae24693c6fa6283433d"
+      };
+      firebase.initializeApp(firebaseConfig);
+    </script>
+
+<script src="library.js"></script>
+    <script src="app.js"></script>
+    </body>
+</html>
